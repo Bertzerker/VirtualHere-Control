@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VirtualHere Setup</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="setup-page">
+  <main class="setup-window"><header class="topbar setup-titlebar">
+    <div>
+      <h1>Setup</h1>
+      <p id="setupStatus">Bereit</p>
+    </div>
+    <div class="top-actions">
+      <button id="loadConfigButton" type="button">Config laden</button>
+      <button id="saveConfigButton" type="button">Config speichern</button>
+      <button id="planButton" type="button">Plan</button>
+      <button id="dryRunButton" type="button">Testlauf</button>
+      <button id="runButton" type="button" class="primary">Start</button>
+    </div>
+  </header>
+
+  <section class="setup-layout">
+    <section class="panel setup-panel" aria-labelledby="serverTitle">
+      <div class="section-head">
+        <h2 id="serverTitle">Server</h2>
+        <span class="counter">1</span>
+      </div>
+      <div class="form-grid">
+        <label>Name <input id="serverName" value="VirtualHere Server" autocomplete="off"></label>
+        <label>IP oder Host <input id="serverIp" placeholder="192.168.8.10" autocomplete="off"></label>
+        <label>OS <select id="serverOs"></select></label>
+        <label>Binary / Architektur <select id="serverArch"></select></label>
+        <label>SSH Login <input id="serverLogin" autocomplete="username"></label>
+        <label>SSH Passwort <input id="serverPassword" type="password" autocomplete="current-password"></label>
+        <label>SSH Port <input id="serverSshPort" type="number" min="1" max="65535" value="22"></label>
+        <label>Ordner <input id="serverFolder" value="/opt/vh-control" autocomplete="off"></label>
+      </div>
+    </section>
+
+    <section class="panel setup-panel" aria-labelledby="optionsTitle">
+      <div class="section-head">
+        <h2 id="optionsTitle">Optionen</h2>
+      </div>
+      <div class="form-grid compact">
+        <label>Controller Port <input id="controllerPort" type="number" min="1" max="65535" value="8080"></label>
+        <label>Agent Port <input id="agentPort" type="number" min="1" max="65535" value="9443"></label>
+        <label>VirtualHere Hub Port <input id="vhHubPort" type="number" min="1" max="65535" value="7575"></label>
+        <label>VirtualHere SSL Port <input id="vhSslPort" type="number" min="1" max="65535" value="7574"></label>
+        <label class="check-row"><input id="useSsl" type="checkbox" checked> SSL konfigurieren</label>
+        <label class="check-row"><input id="useClientCerts" type="checkbox"> Client-Zertifikate verlangen</label>
+      </div>
+    </section>
+
+    <section class="panel setup-panel clients-setup" aria-labelledby="setupClientsTitle">
+      <div class="section-head">
+        <h2 id="setupClientsTitle">Clients</h2>
+        <button id="addClientButton" type="button">Client hinzufügen</button>
+      </div>
+      <div id="setupClients" class="setup-clients"></div>
+    </section>
+
+    <section class="panel setup-panel result-panel" aria-labelledby="planTitle">
+      <div class="section-head">
+        <h2 id="planTitle">Ablauf</h2>
+        <span id="resultCount" class="counter">0</span>
+      </div>
+      <div id="setupResult" class="setup-result">
+        <div class="empty">Noch kein Plan erstellt</div>
+      </div>
+    </section>
+  </section>
+
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/setup.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+{
+  "clients": [
+    {
+      "id": "linux-pc",
+      "name": "Linux PC",
+      "type": "linux",
+      "os_variant": "arch",
+      "url": "https://192.0.2.20:9443",
+      "token": "change-me",
+      "verify_tls": true,
+      "ca_bundle": "certs/setup-ca.pem"
+    },
+    {
+      "id": "windows-pc",
+      "name": "Windows PC",
+      "type": "windows",
+      "os_variant": "windows",
+      "url": "https://192.0.2.30:9443",
+      "token": "change-me",
+      "verify_tls": true,
+      "ca_bundle": "certs/setup-ca.pem"
+    }
+  ]
+}

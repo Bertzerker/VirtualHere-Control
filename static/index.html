@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VirtualHere USB Control</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="control-classic">
+  <main class="classic-window" aria-labelledby="appTitle">
+    <header class="classic-titlebar">
+      <div class="classic-title">
+        <img class="app-icon" src="/virtualhere-icon.png" alt="">
+        <h1 id="appTitle">Virtual Here Control</h1>
+      </div>
+      <div class="classic-actions">
+        <span id="statusText">Lade Status...</span>
+        <button id="refreshButton" type="button" title="Aktualisieren">↻</button>
+      </div>
+    </header>
+
+    <section class="classic-tree" aria-label="VirtualHere Control">
+      <div id="devices"></div>
+      <div id="clients"></div>
+    </section>
+    <span id="deviceCount" hidden>0</span>
+    <span id="clientCount" hidden>0</span>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

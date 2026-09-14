@@ -1,0 +1,11 @@
+{
+  "client_id": "linux-pc",
+  "client_name": "Linux PC",
+  "listen_host": "0.0.0.0",
+  "listen_port": 9443,
+  "api_token": "change-me-linux",
+  "vh_binary": "/home/robert/vh-control/vhclientx86_64",
+  "command_timeout_seconds": 7,
+  "tls_cert": "/home/robert/vh-control/certs/linux-pc.crt",
+  "tls_key": "/home/robert/certs/linux-pc.key"
+}
