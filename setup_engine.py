@@ -461,13 +461,23 @@ class SetupContext:
     def install_server_services(self, ssh):
         server = self.server
         if server.os_type == "openwrt":
+            vh_binary = shlex.quote(server.remote_binary)
+            vh_config = shlex.quote(server_generated_config_path(server))
+            vh_name = shlex.quote(server.binary_name)
+            vh_log = "/tmp/vhusbd.log"
+            vhusbd_cmd = (
+                f"if [ -x {vh_binary} ]; then "
+                f"pidof {vh_name} >/dev/null 2>&1 || "
+                f"({vh_binary} -b -c {vh_config} >>{vh_log} 2>&1 || {vh_binary} >>{vh_log} 2>&1 &); "
+                f"else echo \"$(date): VirtualHere binary missing or not executable: {server.remote_binary}\" >>{vh_log}; fi"
+            )
             controller_cmd = (
                 f"pgrep -f {shlex.quote('controller.py .*--port ' + str(self.options['controller_port']))} >/dev/null 2>&1 || "
                 f"(cd {shlex.quote(server.install_dir)} && "
                 f"nohup python3 controller.py --host {shlex.quote(server.ip)} --port {self.options['controller_port']} "
                 f">/tmp/vh-control-web.log 2>&1 &)"
             )
-            rc_block = rc_local_block([controller_cmd])
+            rc_block = rc_local_block([vhusbd_cmd, controller_cmd])
             ssh.upload_text(rc_block, "/tmp/vh-control-rc.block")
             ssh.run_linux("""
             touch /etc/rc.local
@@ -496,7 +506,7 @@ class SetupContext:
             mv /tmp/rc.local.new /etc/rc.local
             rm -f /tmp/rc.local.clean /tmp/vh-control-rc.block
             chmod +x /etc/rc.local
-            """ + "\n" + controller_cmd, sudo=True)
+            """ + "\n" + vhusbd_cmd + "\n" + controller_cmd, sudo=True)
         elif server.os_type == "linux":
             vh_service = f"""
             [Unit]
