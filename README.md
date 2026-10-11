@@ -37,19 +37,15 @@ Fuer den produktiven Betrieb sollte jeder Agent ueber HTTPS laufen und einen eig
    python setup_engine.py --hostname 127.0.0.1 --port 8098
    ```
 
-<p align="center">
-<img src="docs/screenshots/setup.png" alt="X-GUNNER branding image" width="420">
-</p>
-
 3. Im Browser oeffnen:
 
    ```text
    http://127.0.0.1:8098/setup.html
    ```
-
 <p align="center">
-<img src="docs/screenshots/controller.png" alt="X-GUNNER branding image" width="420">
+<img src="docs/screenshots/setup.png" alt="X-GUNNER branding image" width="420">
 </p>
+
 
 Der Installer fragt Server und Clients mit OS, Architektur, IP/Host, SSH-Login, SSH-Passwort und Zielordner ab. Danach erstellt er einen Plan oder fuehrt die Einrichtung per SSH aus. Passwoerter werden nicht in `config/clients.json` oder den Setup-Reports gespeichert.
 
@@ -101,6 +97,10 @@ Die VirtualHere-eigene `config.ini` im Server-Ordner wird vom Installer nicht be
    ```text
    http://SERVER-IP:8080
    ```
+
+<p align="center">
+<img src="docs/screenshots/controller.png" alt="X-GUNNER branding image" width="420">
+</p>
 
 ## Bedienung
 
