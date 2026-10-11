@@ -43,7 +43,7 @@ Fuer den produktiven Betrieb sollte jeder Agent ueber HTTPS laufen und einen eig
    http://127.0.0.1:8098/setup.html
    ```
 <p align="center">
-<img src="docs/screenshots/setup.png" alt="X-GUNNER branding image" width="420">
+<img src="docs/screenshots/setup.png" alt="setup" width="420">
 </p>
 
 
@@ -99,7 +99,7 @@ Die VirtualHere-eigene `config.ini` im Server-Ordner wird vom Installer nicht be
    ```
 
 <p align="center">
-<img src="docs/screenshots/controller.png" alt="X-GUNNER branding image" width="420">
+<img src="docs/screenshots/controller.png" alt="controller" width="420">
 </p>
 
 ## Bedienung
