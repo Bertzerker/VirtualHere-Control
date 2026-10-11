@@ -2,6 +2,16 @@
 
 Webinterface zur zentralen Zuweisung von VirtualHere-USB-Geraeten an feste Clients.
 
+## Screenshots
+
+### Controller
+
+![VirtualHere Control mit USB-Servern und Client-Treeview](docs/screenshots/controller.png)
+
+### Setup
+
+![Gefuehrter Installer mit Server- und Verbindungseinstellungen](docs/screenshots/setup.png)
+
 ## Architektur
 
 VirtualHere stellt die Client-Steuerung lokal am Client bereit. Deshalb besteht diese Loesung aus zwei Teilen:
@@ -31,16 +41,16 @@ Fuer den produktiven Betrieb sollte jeder Agent ueber HTTPS laufen und einen eig
    python -m pip install -r requirements.txt
    ```
 
-2. Controller starten:
+2. Setup starten:
 
    ```powershell
-   python controller.py --host 0.0.0.0 --port 8080
+   python setup_engine.py --hostname 127.0.0.1 --port 8098
    ```
 
 3. Im Browser oeffnen:
 
    ```text
-   http://SERVER-IP:8080/setup.html
+   http://127.0.0.1:8098/setup.html
    ```
 
 Der Installer fragt Server und Clients mit OS, Architektur, IP/Host, SSH-Login, SSH-Passwort und Zielordner ab. Danach erstellt er einen Plan oder fuehrt die Einrichtung per SSH aus. Passwoerter werden nicht in `config/clients.json` oder den Setup-Reports gespeichert.
